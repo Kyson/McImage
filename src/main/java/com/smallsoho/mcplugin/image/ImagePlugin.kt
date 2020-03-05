@@ -6,6 +6,7 @@ import com.android.build.gradle.internal.api.BaseVariantImpl
 import com.smallsoho.mcplugin.image.`interface`.IBigImage
 import com.smallsoho.mcplugin.image.utils.*
 import com.smallsoho.mcplugin.image.webp.WebpUtils
+import groovy.json.JsonOutput
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -67,7 +68,9 @@ class ImagePlugin : Plugin<Project> {
                 val mcPicTask = project.task("McImage${variant.name.capitalize()}")
 
                 mcPicTask.doLast {
-
+                    LogUtil.log("----- McImage config -----")
+                    LogUtil.log(JsonOutput.toJson(mcImageConfig))
+                    LogUtil.log("----- McImage config -----")
                     //debug enable
                     if (isDebugTask && !mcImageConfig.enableWhenDebug) {
                         LogUtil.log("Debug not run ^_^")
@@ -81,7 +84,6 @@ class ImagePlugin : Plugin<Project> {
                     }
 
                     LogUtil.log("---- McImage Plugin Start ----")
-                    LogUtil.log(mcImageConfig.toString())
 
                     val dir = variant.allRawAndroidResources.files
 

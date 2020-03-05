@@ -1,5 +1,7 @@
 package com.smallsoho.mcplugin.image;
 
+import java.util.Arrays;
+
 public class Config {
 
     public static final String OPTIMIZE_WEBP_CONVERT = "ConvertWebp"; //webp化
@@ -71,29 +73,5 @@ public class Config {
 
     public void bigImageWhiteList(String[] bigImageWhiteList) {
         this.bigImageWhiteList = bigImageWhiteList;
-    }
-
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        result.append("<<<<<<<<<<<<<<McConfig>>>>>>>>>>>>" + "\n");
-        result.append("maxSize :" + maxSize + "\n"
-                + "isCheckSize: " + isCheckSize + "\n"
-                + "optimizeType: " + optimizeType + "\n"
-                + "enableWhenDebug: " + enableWhenDebug + "\n"
-                + "isCheckPixels: " + isCheckPixels + "\n"
-                + "maxWidth: " + maxWidth + ", maxHeight: "  + maxHeight + "\n"
-                + "mctoolsDir: " + mctoolsDir + "\n"
-                + "isSupportAlphaWebp: " + isSupportAlphaWebp + "\n"
-                + "multiThread: " + multiThread + "\n"
-                + "whiteList : \n");
-        for(String file : whiteList) {
-            result.append("     -> : " + file + "\n");
-        }
-        result.append("bigImageWhiteList: \n");
-        for(String file: bigImageWhiteList) {
-            result.append("     -> : " + file + "\n");
-        }
-        result.append("<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>");
-        return result.toString();
     }
 }
