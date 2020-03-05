@@ -18,6 +18,9 @@ public class Config {
     public boolean multiThread = true;
     public String[] bigImageWhiteList = new String[]{}; //大图检测白名单
 
+    public int guetzliQuality = 95;
+    public int pngquantQuality = 95-100;
+
     public void maxSize(float maxSize) {
         this.maxSize = maxSize;
     }

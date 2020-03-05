@@ -1,12 +1,13 @@
 package com.smallsoho.mcplugin.image.utils
 
+import com.smallsoho.mcplugin.image.Config
 import java.io.File
 
 class CompressUtil {
 
     companion object {
         private const val TAG = "Compress"
-        fun compressImg(imgFile: File) {
+        fun compressImg(imgFile: File,mcImageConfig: Config) {
             if (!ImageUtil.isImage(imgFile)) {
                 return
             }
@@ -15,7 +16,7 @@ class CompressUtil {
             if (ImageUtil.isJPG(imgFile)) {
                 val tempFilePath: String = "${imgFile.path.substring(0, imgFile.path.lastIndexOf("."))}_temp" +
                         imgFile.path.substring(imgFile.path.lastIndexOf("."))
-                Tools.cmd("guetzli", "${imgFile.path} $tempFilePath")
+                Tools.cmd("guetzli", "--quality ${mcImageConfig.guetzliQuality} ${imgFile.path} $tempFilePath")
                 val tempFile = File(tempFilePath)
                 newSize = tempFile.length()
                 LogUtil.log("newSize = $newSize")
@@ -30,9 +31,8 @@ class CompressUtil {
                         tempFile.delete()
                     }
                 }
-
             } else {
-                Tools.cmd("pngquant", "--skip-if-larger --speed 1 --nofs --strip --force --output ${imgFile.path} -- ${imgFile.path}")
+                Tools.cmd("pngquant", "--skip-if-larger --quality=${mcImageConfig.pngquantQuality} --speed 1 --nofs --strip --force --output ${imgFile.path} -- ${imgFile.path}")
                 newSize = File(imgFile.path).length()
             }
 

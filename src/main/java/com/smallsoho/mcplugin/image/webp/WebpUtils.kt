@@ -53,7 +53,7 @@ class WebpUtils {
                             formatWebp(imgFile)
                         } else {
                             //包含透明通道的png，进行压缩
-                            CompressUtil.compressImg(imgFile)
+                            CompressUtil.compressImg(imgFile,config)
                         }
                     }
                 }

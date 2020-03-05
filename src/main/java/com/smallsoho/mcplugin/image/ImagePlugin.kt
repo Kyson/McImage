@@ -198,7 +198,7 @@ class ImagePlugin : Plugin<Project> {
             Config.OPTIMIZE_WEBP_CONVERT ->
                 WebpUtils.securityFormatWebp(file, mcImageConfig, mcImageProject)
             Config.OPTIMIZE_COMPRESS_PICTURE ->
-                CompressUtil.compressImg(file)
+                CompressUtil.compressImg(file,mcImageConfig)
         }
         countNewSize(path)
     }

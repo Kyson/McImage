@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/McImage.iml" filepath="$PROJECT_DIR$/McImage.iml" group="McImage" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dev-McImage.iml" filepath="$PROJECT_DIR$/.idea/modules/dev-McImage.iml" group="McImage" />
     </modules>
   </component>
 </project>
